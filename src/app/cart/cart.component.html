@@ -1,0 +1,22 @@
+<div>
+    <h1>{{componentName}}</h1>
+    <!-- <input class="form-control" type="text" (input)="getItem($event)"
+    [value]="item"> -->
+    <input class="form-control" type="text" [(ngModel)]="item">
+    <button [disabled]="btnDisabled" (click)="addTocart()" class="btn btn-success w-100">Add</button>
+
+   
+    
+    <ul *ngIf="cart.length; else alert" class="list-group">
+      <li class="list-group-item" *ngFor="let item of cart; let i=index"
+        [ngStyle]="{'background':i%2 ? bg:''}"
+        [ngClass]="{'list-group-item-danger':!(i%2)}"
+        >
+        {{i+1}}.  {{item}}
+      </li>
+    </ul>
+
+    <ng-template #alert>
+        <p class="alert alert-danger">Cart is Empty</p>
+    </ng-template>
+  </div>
